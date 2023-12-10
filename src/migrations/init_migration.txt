@@ -1,0 +1,6 @@
+DROP TABLE IF EXISTS author CASCADE;
+DROP TABLE IF EXISTS book;
+CREATE TABLE author (id serial PRIMARY KEY, name varchar(150) NOT NULL, country varchar(150));
+CREATE TABLE book (id serial PRIMARY KEY, title varchar(150) NOT NULL, author_id integer REFERENCES author(id) ON DELETE CASCADE);
+INSERT INTO author (name, country) VALUES ('Михаил Афанасьевич Булгаков', 'Россия'), ('Эрих Мария Ремарк', 'Германия'), ('Оскар Уайльд', 'Ирландия');
+INSERT INTO book (title, author_id) VALUES ('Записки юного врача', 1), ('Мастер и Маргарита', 1), ('Собачье сердце', 1), ('Три товарища', 2), ('Триумфальная арка', 2), ('Время жить и время умирать', 2), ('Портрет Дориана Грея', 3), ('Соловей и роза', 3), ('Веер леди Уиндермир', 3);
